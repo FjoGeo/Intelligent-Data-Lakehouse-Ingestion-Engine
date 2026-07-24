@@ -1,0 +1,18 @@
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio-lake
+    restart: always
+    ports:
+      - "9000:9000" # S3 API Endpoint (for your Python/Go script)
+      - "9001:9001" # MinIO Web Console UI
+    environment:
+      MINIO_ROOT_USER: adminuser
+      MINIO_ROOT_PASSWORD: adminpassword
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+
+volumes:
+  minio_data:
+    driver: local
