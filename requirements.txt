@@ -2,5 +2,7 @@ boto3
 openmeteo-requests
 pandas
 pyarrow
+python-dotenv
+requests
 requests-cache
 retry-requests
